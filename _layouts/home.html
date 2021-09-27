@@ -8,7 +8,7 @@
     <h1>Heading One</h1>
     <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-    <p><img src="http://f.cl.ly/items/1f3f0U0A3x0P1Z022y1Q/532999_10150681079447771_501672770_9454022_1744955305_n.jpeg" alt="New Haven South Beach by Matt Graham"></p>
+    <p><img src="/images/img_girl.jpg" alt="Girl in a jacket"></p>
 
 <pre><code>$ cd your_repo_root/repo_name
 $ git fetch origin
@@ -16,6 +16,45 @@ $ git checkout gh-pages
 </code></pre>
 
     <p>As we do, we're open sourcing the front end code for the new GitHub pages themes. This is just one of the many beautiful themes that can used to dynamically turn your static repo into a beautiful marketing site.  </p>
+
+<!--
+  try to add paginate code here.
+-->
+
+{% for post in paginator.posts %}
+<li class="article__item">
+    <a class="article__title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+<span class="article__date">{{ post.date | date_to_string }} </span>
+</li>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+  <!-- 分页代码 -->
+
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">上一页</a>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <span class="active">{{ page }}</span>
+    {% elsif page == 1 %}
+      <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">下一页</a>
+  {% endif %}
+{% endif %}
+
+
+<!--
+  paginate code ends.
+-->
+
 
     <h2>Designer Templates</h2>
 
