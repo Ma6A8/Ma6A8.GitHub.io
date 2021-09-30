@@ -1,5 +1,6 @@
 ---
 layout: home
+title: Hello World!
 ---
 
  {% for post in paginator.posts %}
