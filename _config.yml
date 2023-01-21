@@ -1,8 +1,0 @@
-# Gems
-gems: 
- - jekyll-feed //这个是原来就有的
- - jekyll-paginate
-#gems也可以这样写
-#gems: [jekyll-feed, jekyll-paginate]
-paginate: 10  
-paginate_path: "page:num" 
